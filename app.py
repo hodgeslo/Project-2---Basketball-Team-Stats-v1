@@ -43,9 +43,24 @@ def clean_data(players):
 
 
 # 5. Create a balance_teams function
-def balance_teams():
-    pass
+def balance_teams(players, teams):
+    num_players_team = len(PLAYERS) / len(TEAMS)
+    print(f"Total players: {len(PLAYERS)}")
+    print(f"Total teams: {len(TEAMS)}")
+    balanced_teams = []
+    updated_teams = {}
+    for add_player in players:
+        print(add_player['name'])
+        balanced_teams.append(add_player['name'])
+        for key in add_player:
+            while num_players_team > 0:
+                updated_teams['names'] = balanced_teams
+                num_players_team -= 17
+        #     print(updated_teams)
+        # print(balanced_teams)
+    return updated_teams
+
 
 # 2. Proper use of Dunder Main
 if __name__ == '__main__':
-    print(clean_data(PLAYERS))
+    print(balance_teams(PLAYERS, TEAMS))

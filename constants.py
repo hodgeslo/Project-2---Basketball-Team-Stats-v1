@@ -110,5 +110,5 @@ PLAYERS = [{
         'guardians': 'Bill Stein and Hillary Stein',
         'experience': 'NO',
         'height': '41 inches'
-    }
+    },
 ]
