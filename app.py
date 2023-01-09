@@ -24,6 +24,8 @@ PLAYERS = [{
         'height': '42 inches'
     },
 """
+
+
 def display_menu():
     print(f"\nBASKETBALL TEAM STATS TOOL\n")
     print(f"------ MENU ------\n")
@@ -83,20 +85,20 @@ def balance_teams(players, teams):
     # print(f"Total teams: {len(teams)}")
     # print(num_players_team)
 
-    #print(balanced_teams)
+    # print(balanced_teams)
     # for add_player in players:
     #     print(add_player['name'])
     #     for key in add_player:
     #         updated_teams['Panthers'] = balanced_teams
-        #     print(updated_teams)
-        # print(balanced_teams)
+    #     print(updated_teams)
+    # print(balanced_teams)
     return players_only
 
 
 # 2. Proper use of Dunder Main
 if __name__ == '__main__':
     print()
-    #print(clean_data(PLAYERS))
+    # print(clean_data(PLAYERS))
     balance_teams(PLAYERS, TEAMS)
     #    display_menu()
     # teamz = [
@@ -122,3 +124,5 @@ if __name__ == '__main__':
     # print(type(set3))
     # print(type(set4))
     # print(set5)
+    set1 = set(PLAYERS[0].items())
+    print(set1)
