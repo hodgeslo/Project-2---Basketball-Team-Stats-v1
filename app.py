@@ -51,16 +51,20 @@ def clean_data(players):
 def balance_teams(players, teams):
     num_players_team = int(len(players) / len(teams))
     cleaned_player_list = clean_data(players)
-    players_only = []
+    players_only = set()
     balanced_teams_players = {}
 
     for key in cleaned_player_list:
-        players_only.append(key['name'])
+        players_only.add(key['name'])
 
-    for i in range(len(players)):
-        balanced_teams_players['Panthers'] = players_only[i]
-        print(players_only[i])
+    for value in players_only:
+        print(value)
 
+    # for i in range(len(players)):
+    #     balanced_teams_players['Panthers'] = players_only[i]
+    #     print(players_only[i])
+
+    players_only = set(players_only)
     print(players_only)
     print(balanced_teams_players)
 
@@ -95,15 +99,26 @@ if __name__ == '__main__':
     #print(clean_data(PLAYERS))
     balance_teams(PLAYERS, TEAMS)
     #    display_menu()
-    teamz = [
-        'Panthers',
-        ['player1', 'player2'],
-        'Bandits',
-        'Warriors',
-    ]
-    print(teamz[1][0])
-
-    teamzz = {
-        'Panthers': '["Karl Saygan","Karl Saygan1"]'
-    }
-    print(teamzz['Panthers'])
+    # teamz = [
+    #     'Panthers',
+    #     ['player1', 'player2'],
+    #     'Bandits',
+    #     'Warriors',
+    # ]
+    # print(teamz[1][0])
+    #
+    # teamzz = {
+    #     'Panthers': '["Karl Saygan","Karl Saygan1"]'
+    # }
+    # print(teamzz['Panthers'])
+    # set1 = set()
+    # set2 = set(['foo', 'bar', 'baz', 'foo', 'qux'])
+    # set3 = set({'foo': 'bar'})
+    # set4 = set({})
+    # set5 = set2
+    #
+    # print(type(set1))
+    # print(type(set2))
+    # print(type(set3))
+    # print(type(set4))
+    # print(set5)
