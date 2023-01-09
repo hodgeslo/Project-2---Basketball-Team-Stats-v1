@@ -53,46 +53,50 @@ def clean_data(players):
 def balance_teams(players, teams):
     num_players_team = int(len(players) / len(teams))
     cleaned_player_list = clean_data(players)
-    players_only = set()
-    balanced_teams_players = {}
+    initial_team_list = teams
+    balanced_team_list = []
+    players_only_set = set()
+    players_only_list = []
+    players_only_dict = {}
+
+    # print(f"This is a set: {players_only_set}")
+    # print(f"This is a list: {players_only_list}")
+    # print(f"This is a dict: {players_only_dict}")
+    # print(f"\n\n")
 
     for key in cleaned_player_list:
-        players_only.add(key['name'])
+        #players_only_set.add(key['name'])
+        players_only_list.append(key['name'])
 
-    for value in players_only:
-        print(value)
+    # print(f"This is a set: {players_only_set}")
+    # print(f"This is a list: {players_only_list}")
+    # print(f"This is a dict: {players_only_dict}")
+    # print(f"\n\n")
 
-    # for i in range(len(players)):
-    #     balanced_teams_players['Panthers'] = players_only[i]
-    #     print(players_only[i])
+    for i in range(num_players_team):
+        players_only_set.add(players_only_list[i])
+        #balanced_team_list.append(players_only_list[i])
 
-    players_only = set(players_only)
-    print(players_only)
-    print(balanced_teams_players)
+    print(f"This is a set: {players_only_set}")
+    print(f"This is a list: {players_only_list}")
+    print(f"This is a dict: {players_only_dict}")
+    print(f"\n\n")
 
-    # for i in range(len(PLAYERS)):
-    #     if i <= 5:
-    #         print(f'team 1: {players_only[i]}')
-    #         i += 1
-    #     elif i >= 6 and i <= 11:
-    #         print(f'team 2: {players_only[i]}')
-    #         i += 1
-    #     elif i >= 12:
-    #         print(f'team 3: {players_only[i]}')
-    #         i += 1
+    for i in range(len(teams)):
+        players_only_dict[initial_team_list[i]] = players_only_set
 
-    # print(f"Total players: {len(players)}")
-    # print(f"Total teams: {len(teams)}")
-    # print(num_players_team)
+    print(f"This is a set: {players_only_set}")
+    print(f"This is a list: {players_only_list}")
+    print(f"This is a dict: {players_only_dict}")
+    print(f"\n\n")
+    #print(players_only_dict['Panthers'])
+    #print(balanced_team_list)
 
-    # print(balanced_teams)
-    # for add_player in players:
-    #     print(add_player['name'])
-    #     for key in add_player:
-    #         updated_teams['Panthers'] = balanced_teams
-    #     print(updated_teams)
-    # print(balanced_teams)
-    return players_only
+    #print(players_only_set)
+    #print(players_only_dict)
+
+    #print(players_only_list)
+    return players_only_set
 
 
 # 2. Proper use of Dunder Main
@@ -125,4 +129,4 @@ if __name__ == '__main__':
     # print(type(set4))
     # print(set5)
     set1 = set(PLAYERS[0].items())
-    print(set1)
+    #print(set1)
