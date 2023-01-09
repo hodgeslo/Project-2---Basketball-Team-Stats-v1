@@ -24,15 +24,20 @@ PLAYERS = [{
         'height': '42 inches'
     },
 """
+def display_menu():
+    print(f"\nBASKETBALL TEAM STATS TOOL\n")
+    print(f"------ MENU ------\n")
+    print(f"  Here are your choices:")
+    print(f"    A) Display Team Stats")
+    print(f"    B) Quit")
+    input("  Enter an option: ")
 
 
 # 4. Create a clean_data function
 def clean_data(players):
     cleaned_players_list = []
     for player in players:
-        cleaned_players = {}
-        cleaned_players['name'] = player['name']
-        cleaned_players['guardians'] = player['guardians']
+        cleaned_players = {'name': player['name'], 'guardians': player['guardians']}
         if player['experience'] == 'YES':
             cleaned_players['experience'] = True
         else:
@@ -44,23 +49,61 @@ def clean_data(players):
 
 # 5. Create a balance_teams function
 def balance_teams(players, teams):
-    num_players_team = len(PLAYERS) / len(TEAMS)
-    print(f"Total players: {len(PLAYERS)}")
-    print(f"Total teams: {len(TEAMS)}")
-    balanced_teams = []
-    updated_teams = {}
-    for add_player in players:
-        print(add_player['name'])
-        balanced_teams.append(add_player['name'])
-        for key in add_player:
-            while num_players_team > 0:
-                updated_teams['names'] = balanced_teams
-                num_players_team -= 17
+    num_players_team = int(len(players) / len(teams))
+    cleaned_player_list = clean_data(players)
+    players_only = []
+    balanced_teams_players = {}
+
+    for key in cleaned_player_list:
+        players_only.append(key['name'])
+
+    for i in range(len(players)):
+        balanced_teams_players['Panthers'] = players_only[i]
+        print(players_only[i])
+
+    print(players_only)
+    print(balanced_teams_players)
+
+    # for i in range(len(PLAYERS)):
+    #     if i <= 5:
+    #         print(f'team 1: {players_only[i]}')
+    #         i += 1
+    #     elif i >= 6 and i <= 11:
+    #         print(f'team 2: {players_only[i]}')
+    #         i += 1
+    #     elif i >= 12:
+    #         print(f'team 3: {players_only[i]}')
+    #         i += 1
+
+    # print(f"Total players: {len(players)}")
+    # print(f"Total teams: {len(teams)}")
+    # print(num_players_team)
+
+    #print(balanced_teams)
+    # for add_player in players:
+    #     print(add_player['name'])
+    #     for key in add_player:
+    #         updated_teams['Panthers'] = balanced_teams
         #     print(updated_teams)
         # print(balanced_teams)
-    return updated_teams
+    return players_only
 
 
 # 2. Proper use of Dunder Main
 if __name__ == '__main__':
-    print(balance_teams(PLAYERS, TEAMS))
+    print()
+    #print(clean_data(PLAYERS))
+    balance_teams(PLAYERS, TEAMS)
+    #    display_menu()
+    teamz = [
+        'Panthers',
+        ['player1', 'player2'],
+        'Bandits',
+        'Warriors',
+    ]
+    print(teamz[1][0])
+
+    teamzz = {
+        'Panthers': '["Karl Saygan","Karl Saygan1"]'
+    }
+    print(teamzz['Panthers'])
