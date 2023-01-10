@@ -23,9 +23,16 @@ PLAYERS = [{
         'experience': 'YES',
         'height': '42 inches'
     },
+    
+balance_teams = [
+        {
+            'Panthers': ['Karl Saygan', 'Skrillex' ]
+        },
+        {
+            'Bandits': ['Lonnie Hodges', 'Tool' ]
+        }
+    ]
 """
-
-
 # 4. Create a clean_data function
 def clean_data(players):
     cleaned_players_list = []
@@ -42,21 +49,37 @@ def clean_data(players):
 
 # 5. Create a balance_teams function
 def balance_teams(players, teams):
+    """
+    balance_teams = [
+        {
+            'Panthers': ['Karl Saygan', 'Skrillex' ]
+        },
+        {
+            'Bandits': ['Lonnie Hodges', 'Tool' ]
+        }
+    ]
+    """
+
     num_players_per_team = int(len(players) / len(teams))
     cleaned_players_list = clean_data(players)
-    #print(cleaned_players_list)
-    #print(teams)
-    initial_team_list = teams
-    balanced_team_list = []
+    balanced_team_list = teams
+    players_list_by_6 = []
     players_only_set = set()
     players_only_list = []
     players_only_dict = {}
 
     for index_players, number_players in enumerate(cleaned_players_list):
-        print(index_players, number_players)
-        #print(cleaned_players_list[:6][0].items())
+        print(index_players, number_players['name'])
+        players_list_by_6.append(number_players['name'])
+
+    for index_players, number_players in enumerate(balanced_team_list):
+        print(players_list_by_6[:6])
+        balanced_team_list[index_players]
+        balanced_team_list.remove(number_players)
 
 
+    for index_teams, number_teams in enumerate(balanced_team_list):
+        print(index_teams, number_teams)
 
 
 
@@ -91,8 +114,8 @@ def balance_teams(players, teams):
     # for i in range(len(teams)):
     #     players_only_dict[initial_team_list[i]] = players_only_set
 
-    for idx, team_name in enumerate(teams):
-        players_only_dict[team_name] = players_only_set
+    # for idx, team_name in enumerate(teams):
+    #     players_only_dict[team_name] = players_only_set
 
     # print(f"This is a set: {players_only_set}")
     # print(f"This is a list: {players_only_list}")
@@ -102,27 +125,27 @@ def balance_teams(players, teams):
     """
     Here is where display the team stats
     """
-    number_of_teams = len(teams)
-    for idx, team_name_menu in enumerate(teams):
-        print(f" {idx + 1})  {team_name_menu}")
-
-    team_menu_user_selected = False
-
-    while not team_menu_user_selected:
-        try:
-            team_menu_selected_option = int(input(f"\nEnter an option > "))
-            if team_menu_selected_option < 1 or team_menu_selected_option > number_of_teams:
-                print(f"Please enter a number between 1 and {number_of_teams}")
-            else:
-                print(f"Team: {teams[team_menu_selected_option - 1]} Stats")
-                print(f"--------------------")
-                print(f"Total players: ")
-                print(f"Total experienced: ")
-                print(f"Total inexperienced: ")
-                print(f"Average height: ")
-                team_menu_user_selected = True
-        except ValueError:
-            print('Numbers only')
+    # number_of_teams = len(teams)
+    # for idx, team_name_menu in enumerate(teams):
+    #     print(f" {idx + 1})  {team_name_menu}")
+    #
+    # team_menu_user_selected = False
+    #
+    # while not team_menu_user_selected:
+    #     try:
+    #         team_menu_selected_option = int(input(f"\nEnter an option > "))
+    #         if team_menu_selected_option < 1 or team_menu_selected_option > number_of_teams:
+    #             print(f"Please enter a number between 1 and {number_of_teams}")
+    #         else:
+    #             print(f"Team: {teams[team_menu_selected_option - 1]} Stats")
+    #             print(f"--------------------")
+    #             print(f"Total players: ")
+    #             print(f"Total experienced: ")
+    #             print(f"Total inexperienced: ")
+    #             print(f"Average height: ")
+    #             team_menu_user_selected = True
+    #     except ValueError:
+    #         print('Numbers only')
 
 
     return players_only_set
@@ -149,14 +172,21 @@ def display_menu():
 # 2. Proper use of Dunder Main
 if __name__ == '__main__':
     clean_data(PLAYERS)
-    # balance_teams(PLAYERS, TEAMS)
-    main_menu_selected_option = display_menu()
-    if main_menu_selected_option == 1:
-        balance_teams(PLAYERS, TEAMS)
-    elif main_menu_selected_option == 2:
-        print(f"Exiting app... Have a nice day")
+    balance_teams(PLAYERS, TEAMS)
+    # main_menu_selected_option = display_menu()
+    # if main_menu_selected_option == 1:
+    #     balance_teams(PLAYERS, TEAMS)
+    # elif main_menu_selected_option == 2:
+    #     print(f"Exiting app... Have a nice day")
 
-
+    # balance_teams = [
+    #     {
+    #         'Panthers': ['Karl Saygan', 'Skrillex' ]
+    #     },
+    #     {
+    #         'Bandits': ['Lonnie Hodges', 'Tool' ]
+    #     }
+    # ]
 
 """
 DON"T USE FOR NOW
