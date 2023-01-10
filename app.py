@@ -56,18 +56,18 @@ def balance_teams(players, teams):
     players_only_list = []
     players_only_dict = {}
     testlist = []
-    mylistfordel = cleaned_players_list[:]
+    my_list_for_del = cleaned_players_list[:]
 
     # print(balanced_team_list[0])
     # print(cleaned_players_list[:6])
     for m in range(len(teams[:])):
-        testlist.append([{balanced_team_list[m]:mylistfordel[:num_players_per_team].copy()}])
-        del mylistfordel[:num_players_per_team]
-        print(mylistfordel)
+        testlist.append([{balanced_team_list[m]:my_list_for_del[:num_players_per_team].copy()}])
+        del my_list_for_del[:num_players_per_team]
+        print(my_list_for_del)
         # print(f"*** THIS IS TEST LIST:\n {testlist}")
 
     print('\n\n\n')
-    print(f"*** THIS IS TEST LIST index 0:\n {testlist[0][0]}\n")
+    print(f"*** THIS IS TEST LIST index 0:\n {testlist[0][0]['Panthers'][0]['experience']}\n")
     print(f"*** THIS IS TEST LIST: index 1:\n {testlist[1][0]}\n")
     print(f"*** THIS IS TEST LIST: index 2:\n {testlist[2][0]}\n")
     #
