@@ -50,16 +50,23 @@ def clean_data(players):
 # 5. Create a balance_teams function
 def balance_teams(players, teams):
     num_players_per_team = int(len(players) / len(teams))
-    cleaned_players_list = clean_data(players)
-    balanced_team_list = teams
+    cleaned_players_list = clean_data(players.copy())
+    balanced_team_list = teams.copy()
     players_only_set = set()
     players_only_list = []
     players_only_dict = {}
+    testlist = []
 
     #print(balanced_team_list[0])
     #print(cleaned_players_list[:6])
-    testlist = [{balanced_team_list[0]:cleaned_players_list[:6]}]
-    print(f"*** THIS IS TEST LIST:\n {testlist[0]}")
+    for m in range(len(teams)):
+        testlist.append([{balanced_team_list[m]:cleaned_players_list[:6]}])
+        # print(f"*** THIS IS TEST LIST:\n {testlist}")
+
+    print('\n\n\n')
+    print(f"*** THIS IS TEST LIST index 0:\n {testlist[0]}\n")
+    print(f"*** THIS IS TEST LIST: index 1:\n {testlist[1]}\n")
+    print(f"*** THIS IS TEST LIST: index 2:\n {testlist[2]}\n")
 
     for x in range(len(teams)):
         print(balanced_team_list[x])
