@@ -53,8 +53,6 @@ def balance_teams(players, teams):
     cleaned_players_list = clean_data(players[:])
     balanced_team_list = teams[:]
     players_only_set = set()
-    players_only_list = []
-    players_only_dict = {}
     testlist = []
     my_list_for_del = cleaned_players_list[:]
 
@@ -67,7 +65,7 @@ def balance_teams(players, teams):
         # print(f"*** THIS IS TEST LIST:\n {testlist}")
 
     print('\n\n\n')
-    print(f"*** THIS IS TEST LIST index 0:\n {testlist[0][0]['Panthers'][0]['experience']}\n")
+    print(f"*** THIS IS TEST LIST index 0:\n {testlist[0][0]}\n")
     print(f"*** THIS IS TEST LIST: index 1:\n {testlist[1][0]}\n")
     print(f"*** THIS IS TEST LIST: index 2:\n {testlist[2][0]}\n")
     #
