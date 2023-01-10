@@ -68,18 +68,34 @@ def balance_teams(players, teams):
     players_only_list = []
     players_only_dict = {}
 
-    for index_players, number_players in enumerate(cleaned_players_list):
-        print(index_players, number_players['name'])
-        players_list_by_6.append(number_players['name'])
+    for x in range(len(teams)):
+        print(balanced_team_list[x])
+        players_only_dict.update([(balanced_team_list[x], [])])
 
-    for index_players, number_players in enumerate(balanced_team_list):
-        print(players_list_by_6[:6])
-        balanced_team_list[index_players]
-        balanced_team_list.remove(number_players)
+    print(players_only_dict)
 
+    for y in range(3):
+        print(cleaned_players_list[y]['name'])
+        # players_only_dict.update([('Panthers', [cleaned_players_list[y]['name']])])
+        for z in range(6):
+            players_only_dict[balanced_team_list[y]] = ','.join([cleaned_players_list[z]['name']])
+        print(players_only_dict)
 
-    for index_teams, number_teams in enumerate(balanced_team_list):
-        print(index_teams, number_teams)
+    # for index_players, number_players in enumerate(cleaned_players_list):
+    #     print(index_players, number_players['name'])
+    #     players_list_by_6.append(number_players['name'])
+    #
+    # for index_players, number_players in enumerate(balanced_team_list):
+    #     # print(players_list_by_6[:6])
+    #     # balanced_team_list[index_players]
+    #     print(balanced_team_list)
+    #
+    # for x in range(len(teams)):
+    #     print(balanced_team_list[x])
+    #
+    #
+    # for index_teams, number_teams in enumerate(balanced_team_list):
+    #     print(index_teams, number_teams)
 
 
 
@@ -98,18 +114,18 @@ def balance_teams(players, teams):
 
     # START AGAIN ABOVE THIS LINE
 
-    for key in cleaned_players_list:
-        # players_only_set.add(key['name'])
-        players_only_list.append(key['name'])
+    # for key in cleaned_players_list:
+    #     # players_only_set.add(key['name'])
+    #     players_only_list.append(key['name'])
 
     # for i in range(num_players_team):
     #     players_only_set.add(players_only_list[i])
     #     # balanced_team_list.append(players_only_list[i])
 
-    for idx_players, num_players in enumerate(cleaned_players_list):
-        players_only_set.add(players_only_list[idx_players])
-        # cleaned_player_list.pop(idx_players)
-        print(idx_players, num_players)
+    # for idx_players, num_players in enumerate(cleaned_players_list):
+    #     players_only_set.add(players_only_list[idx_players])
+    #     # cleaned_player_list.pop(idx_players)
+    #     print(idx_players, num_players)
 
     # for i in range(len(teams)):
     #     players_only_dict[initial_team_list[i]] = players_only_set
