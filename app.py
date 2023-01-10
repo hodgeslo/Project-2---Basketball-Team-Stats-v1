@@ -49,30 +49,26 @@ def clean_data(players):
 
 # 5. Create a balance_teams function
 def balance_teams(players, teams):
-    """
-    balance_teams = [
-        {
-            'Panthers': ['Karl Saygan', 'Skrillex' ]
-        },
-        {
-            'Bandits': ['Lonnie Hodges', 'Tool' ]
-        }
-    ]
-    """
-
     num_players_per_team = int(len(players) / len(teams))
     cleaned_players_list = clean_data(players)
     balanced_team_list = teams
-    players_list_by_6 = []
     players_only_set = set()
     players_only_list = []
     players_only_dict = {}
+
+    #print(balanced_team_list[0])
+    #print(cleaned_players_list[:6])
+    testlist = [{balanced_team_list[0]:cleaned_players_list[:6]}]
+    print(f"*** THIS IS TEST LIST:\n {testlist[0]}")
 
     for x in range(len(teams)):
         print(balanced_team_list[x])
         players_only_dict.update([(balanced_team_list[x], [])])
 
-    print(players_only_dict)
+    #print(players_only_dict)
+    players_only_dict['Panthers'] = ['']
+
+
 
     for y in range(3):
         print(cleaned_players_list[y]['name'])
