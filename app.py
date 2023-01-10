@@ -65,7 +65,7 @@ def balance_teams(players, teams):
     # print(f"\n\n")
 
     for key in cleaned_player_list:
-        #players_only_set.add(key['name'])
+        # players_only_set.add(key['name'])
         players_only_list.append(key['name'])
 
     # print(f"This is a set: {players_only_set}")
@@ -75,27 +75,34 @@ def balance_teams(players, teams):
 
     for i in range(num_players_team):
         players_only_set.add(players_only_list[i])
-        #balanced_team_list.append(players_only_list[i])
+        # balanced_team_list.append(players_only_list[i])
+
+    temp_player_set0 = players_only_set
+
+    print(f'temp player set 1: {temp_player_set0}')
 
     print(f"This is a set: {players_only_set}")
     print(f"This is a list: {players_only_list}")
     print(f"This is a dict: {players_only_dict}")
     print(f"\n\n")
 
-    for i in range(len(teams)):
-        players_only_dict[initial_team_list[i]] = players_only_set
+    # for i in range(len(teams)):
+    #     players_only_dict[initial_team_list[i]] = players_only_set
+
+    for idx, team_name in enumerate(teams):
+        players_only_dict[team_name] = players_only_set
 
     print(f"This is a set: {players_only_set}")
     print(f"This is a list: {players_only_list}")
     print(f"This is a dict: {players_only_dict}")
     print(f"\n\n")
-    #print(players_only_dict['Panthers'])
-    #print(balanced_team_list)
+    # print(players_only_dict['Panthers'])
+    # print(balanced_team_list)
 
-    #print(players_only_set)
-    #print(players_only_dict)
+    # print(players_only_set)
+    # print(players_only_dict)
 
-    #print(players_only_list)
+    # print(players_only_list)
     return players_only_set
 
 
