@@ -7,8 +7,8 @@ NOTE: Python has no concept of actual constants like other languages have. But i
 real world. When you see ALL CAPS variable name you are meant to treat it as if it were a constant or a value that
 you cannot change/alter.
 """
-from constants import TEAMS
-from constants import PLAYERS
+# from constants import TEAMS
+# from constants import PLAYERS
 
 """
 TEAMS = [

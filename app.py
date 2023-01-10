@@ -50,39 +50,40 @@ def clean_data(players):
 # 5. Create a balance_teams function
 def balance_teams(players, teams):
     num_players_per_team = int(len(players) / len(teams))
-    cleaned_players_list = clean_data(players.copy())
-    balanced_team_list = teams.copy()
+    cleaned_players_list = clean_data(players[:])
+    balanced_team_list = teams[:]
     players_only_set = set()
     players_only_list = []
     players_only_dict = {}
     testlist = []
+    mylistfordel = cleaned_players_list[:]
 
-    #print(balanced_team_list[0])
-    #print(cleaned_players_list[:6])
-    for m in range(len(teams)):
-        testlist.append([{balanced_team_list[m]:cleaned_players_list[:6]}])
+    # print(balanced_team_list[0])
+    # print(cleaned_players_list[:6])
+    for m in range(len(teams[:])):
+        testlist.append([{balanced_team_list[m]:mylistfordel[:num_players_per_team].copy()}])
+        del mylistfordel[:num_players_per_team]
+        print(mylistfordel)
         # print(f"*** THIS IS TEST LIST:\n {testlist}")
 
     print('\n\n\n')
-    print(f"*** THIS IS TEST LIST index 0:\n {testlist[0]}\n")
-    print(f"*** THIS IS TEST LIST: index 1:\n {testlist[1]}\n")
-    print(f"*** THIS IS TEST LIST: index 2:\n {testlist[2]}\n")
+    print(f"*** THIS IS TEST LIST index 0:\n {testlist[0][0]}\n")
+    print(f"*** THIS IS TEST LIST: index 1:\n {testlist[1][0]}\n")
+    print(f"*** THIS IS TEST LIST: index 2:\n {testlist[2][0]}\n")
+    #
+    # for x in range(len(teams)):
+    #     print(balanced_team_list[x])
+    #     players_only_dict.update([(balanced_team_list[x], [])])
 
-    for x in range(len(teams)):
-        print(balanced_team_list[x])
-        players_only_dict.update([(balanced_team_list[x], [])])
-
-    #print(players_only_dict)
-    players_only_dict['Panthers'] = ['']
-
-
-
-    for y in range(3):
-        print(cleaned_players_list[y]['name'])
-        # players_only_dict.update([('Panthers', [cleaned_players_list[y]['name']])])
-        for z in range(6):
-            players_only_dict[balanced_team_list[y]] = ','.join([cleaned_players_list[z]['name']])
-        print(players_only_dict)
+    # print(players_only_dict)
+    # players_only_dict['Panthers'] = ['']
+    #
+    # for y in range(3):
+    #     print(cleaned_players_list[y]['name'])
+    #     # players_only_dict.update([('Panthers', [cleaned_players_list[y]['name']])])
+    #     for z in range(6):
+    #         players_only_dict[balanced_team_list[y]] = ','.join([cleaned_players_list[z]['name']])
+    #     print(players_only_dict)
 
     # for index_players, number_players in enumerate(cleaned_players_list):
     #     print(index_players, number_players['name'])
