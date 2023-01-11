@@ -23,21 +23,14 @@ PLAYERS = [{
         'experience': 'YES',
         'height': '42 inches'
     },
-    
-balance_teams = [
-        {
-            'Panthers': ['Karl Saygan', 'Skrillex' ]
-        },
-        {
-            'Bandits': ['Lonnie Hodges', 'Tool' ]
-        }
-    ]
 """
 
 
 # 4. Create a clean_data function
 def clean_data(players):
     cleaned_players_list = []
+    experienced_players = []
+    inexperienced_players = []
     for player in players:
         cleaned_players = {'name': player['name'], 'guardians': player['guardians']}
         if player['experience'] == 'YES':
@@ -46,6 +39,15 @@ def clean_data(players):
             cleaned_players['experience'] = False
         cleaned_players['height'] = int(player['height'].split()[0])
         cleaned_players_list.append(cleaned_players)
+
+    for player1 in cleaned_players_list.copy():
+        if player1['experience'] == True:
+            experienced_players.append(player1)
+        elif player1['experience'] == False:
+            inexperienced_players.append(player1)
+
+    cleaned_players_list = experienced_players + inexperienced_players
+
     return cleaned_players_list
 
 
@@ -61,8 +63,7 @@ def balance_teams(players, teams):
     for m in range(len(teams[:])):
         testlist.append([{balanced_team_list[m]:my_list_for_del[:num_players_per_team].copy()}])
         del my_list_for_del[:num_players_per_team]
-        print(my_list_for_del)
-        # print(f"*** THIS IS TEST LIST:\n {testlist}")
+        # print(my_list_for_del)
 
     print('\n\n\n')
     print(f"*** THIS IS TEST LIST index 0:\n {testlist[0][0]}\n")
@@ -76,51 +77,6 @@ def balance_teams(players, teams):
         print(nn['height'])
 
     print(sum(average_height_list)/6)
-
-    #
-    # for x in range(len(teams)):
-    #     print(balanced_team_list[x])
-    #     players_only_dict.update([(balanced_team_list[x], [])])
-
-    # print(players_only_dict)
-    # players_only_dict['Panthers'] = ['']
-    #
-    # for y in range(3):
-    #     print(cleaned_players_list[y]['name'])
-    #     # players_only_dict.update([('Panthers', [cleaned_players_list[y]['name']])])
-    #     for z in range(6):
-    #         players_only_dict[balanced_team_list[y]] = ','.join([cleaned_players_list[z]['name']])
-    #     print(players_only_dict)
-
-    # for index_players, number_players in enumerate(cleaned_players_list):
-    #     print(index_players, number_players['name'])
-    #     players_list_by_6.append(number_players['name'])
-    #
-    # for index_players, number_players in enumerate(balanced_team_list):
-    #     # print(players_list_by_6[:6])
-    #     # balanced_team_list[index_players]
-    #     print(balanced_team_list)
-    #
-    # for x in range(len(teams)):
-    #     print(balanced_team_list[x])
-    #
-    #
-    # for index_teams, number_teams in enumerate(balanced_team_list):
-    #     print(index_teams, number_teams)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     # START AGAIN ABOVE THIS LINE
@@ -173,8 +129,6 @@ def balance_teams(players, teams):
     #             team_menu_user_selected = True
     #     except ValueError:
     #         print('Numbers only')
-
-
     return players_only_set
 
 def display_menu():
@@ -198,7 +152,8 @@ def display_menu():
 
 # 2. Proper use of Dunder Main
 if __name__ == '__main__':
-    clean_data(PLAYERS)
+    print(clean_data(PLAYERS))
+    print(len(clean_data(PLAYERS)))
     balance_teams(PLAYERS, TEAMS)
     # main_menu_selected_option = display_menu()
     # if main_menu_selected_option == 1:
