@@ -117,6 +117,8 @@ def balance_teams(players, teams):
                 print(*[player_name['name'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
                 print(f" Guardians:")
                 print(*[player_name['guardians'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
+                print(*[player_name['guardians'][0] for player_name in
+                        complete_team_list[team_menu_option][0]['Panthers'][0]], sep=", ")
                 team_menu_user_selected = True
         except ValueError:
             print('Numbers only')
@@ -146,12 +148,14 @@ def display_menu():
 
 
 if __name__ == '__main__':
-    main_menu_selected_option = display_menu()
-    if main_menu_selected_option == 1:
-        clean_data(PLAYERS)
-        balance_teams(PLAYERS, TEAMS)
-    elif main_menu_selected_option == 2:
-        print(f"Exiting app... Have a nice day")
+    clean_data(PLAYERS)
+    balance_teams(PLAYERS, TEAMS)
+    # main_menu_selected_option = display_menu()
+    # if main_menu_selected_option == 1:
+    #     clean_data(PLAYERS)
+    #     balance_teams(PLAYERS, TEAMS)
+    # elif main_menu_selected_option == 2:
+    #     print(f"Exiting app... Have a nice day")
 """
 DON"T USE FOR NOW
 
