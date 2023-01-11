@@ -77,10 +77,11 @@ def balance_teams(players, teams):
         complete_team_list.append([{balanced_team_list[m]:player_exp_list[:num_players_per_team].copy()}])
         del player_exp_list[:num_players_per_team]
 
-    print('\n\n\n')
-    print(f"*** THIS IS TEST LIST index 0:\n {complete_team_list[0][0]}\n")
-    print(f"*** THIS IS TEST LIST: index 1:\n {complete_team_list[1][0]}\n")
-    print(f"*** THIS IS TEST LIST: index 2:\n {complete_team_list[2][0]}\n")
+    # print('\n\n\n')
+    # print(f"*** THIS IS TEST LIST index 0:\n {complete_team_list[0][0].values()}\n")
+    # print("Count of elements in the Nested Dictionary = ", sum(len(v) for v in complete_team_list[0][0].values()))
+    # print(f"*** THIS IS TEST LIST: index 1:\n {complete_team_list[1][0]}\n")
+    # print(f"*** THIS IS TEST LIST: index 2:\n {complete_team_list[2][0]}\n")
 
     average_height_list = []
     for nn in complete_team_list[0][0]['Panthers']:
@@ -88,31 +89,39 @@ def balance_teams(players, teams):
         print(nn['height'])
 
     print(sum(average_height_list)/6)
-    
+
     """
     Here is where display the team stats
     """
-    # number_of_teams = len(teams)
-    # for idx, team_name_menu in enumerate(teams):
-    #     print(f" {idx + 1})  {team_name_menu}")
-    #
-    # team_menu_user_selected = False
-    #
-    # while not team_menu_user_selected:
-    #     try:
-    #         team_menu_selected_option = int(input(f"\nEnter an option > "))
-    #         if team_menu_selected_option < 1 or team_menu_selected_option > number_of_teams:
-    #             print(f"Please enter a number between 1 and {number_of_teams}")
-    #         else:
-    #             print(f"Team: {teams[team_menu_selected_option - 1]} Stats")
-    #             print(f"--------------------")
-    #             print(f"Total players: ")
-    #             print(f"Total experienced: ")
-    #             print(f"Total inexperienced: ")
-    #             print(f"Average height: ")
-    #             team_menu_user_selected = True
-    #     except ValueError:
-    #         print('Numbers only')
+    number_of_teams = len(teams)
+    for idx, team_name_menu in enumerate(teams):
+        print(f" {idx + 1})  {team_name_menu}")
+
+    team_menu_user_selected = False
+
+    while not team_menu_user_selected:
+        try:
+            team_menu_option = int(input(f"\nEnter an option > "))
+            if team_menu_option < 1 or team_menu_option > number_of_teams:
+                print(f"Please enter a number between 1 and {number_of_teams}")
+            else:
+                team_menu_option = team_menu_option - 1
+                print(f"Team: {teams[team_menu_option]} Stats")
+                print(f"--------------------")
+                print("Total players: ", sum(len(v) for v in complete_team_list[team_menu_option][0].values()))
+                print(f"Total experienced: ")
+                print(f"Total inexperienced: ")
+                print(f"Average height: ")
+                # print(f"Players on Team:\n",complete_team_list[team_menu_option][team_menu_option][teams[team_menu_option]])
+                #mydict = [[nnn.items()][0] for nnn in complete_team_list[team_menu_option][0][teams[team_menu_option]]]
+                #print(f"Players on Team:\n", mydict)
+                # for nn in complete_team_list[team_menu_option][0][teams[team_menu_option]]:
+                #     print(nn['name'])
+                # testcomp = [zz['name'] for zz in complete_team_list[team_menu_option][0][teams[team_menu_option]]]
+                print(*[player_name['name'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
+                team_menu_user_selected = True
+        except ValueError:
+            print('Numbers only')
     return players_only_set
 
 def display_menu():
