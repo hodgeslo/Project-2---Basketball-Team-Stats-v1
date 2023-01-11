@@ -94,6 +94,7 @@ def balance_teams(players, teams):
     Here is where display the team stats
     """
     number_of_teams = len(teams)
+    print("\n")
     for idx, team_name_menu in enumerate(teams):
         print(f" {idx + 1})  {team_name_menu}")
 
@@ -114,6 +115,8 @@ def balance_teams(players, teams):
                 print(f" Average height: ", sum([player_name['height'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]]) / sum(len(v) for v in complete_team_list[team_menu_option][0].values()))
                 print(f" Players on Team:")
                 print(*[player_name['name'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
+                print(f" Guardians:")
+                print(*[player_name['guardians'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
                 team_menu_user_selected = True
         except ValueError:
             print('Numbers only')
