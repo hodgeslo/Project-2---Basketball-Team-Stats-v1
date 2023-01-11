@@ -109,15 +109,16 @@ def balance_teams(players, teams):
                 print(f" Team: {teams[team_menu_option]} Stats")
                 print(f" --------------------")
                 print(" Total players: ", sum(len(v) for v in complete_team_list[team_menu_option][0].values()))
-                print(f" Total experienced: ")
-                print(f" Total inexperienced: ")
+                print(f" Total experienced: ", len([player_name['experience'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]] if player_name['experience']]))
+                print(f" Total inexperienced: ", len([player_name['experience'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]] if not player_name['experience']]))
                 print(f" Average height: ")
                 print(f" Players on Team:")
-                print(*[ player_name['name'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
+                print(*[player_name['name'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
                 team_menu_user_selected = True
         except ValueError:
             print('Numbers only')
     return players_only_set
+
 
 def display_menu():
     print(f"\nBASKETBALL TEAM STATS TOOL\n")
