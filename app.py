@@ -46,13 +46,11 @@ def clean_data(players):
         else:
             inexperienced_players.append(player_experience)
 
-    # print(f"EXPERIENCED: {experienced_players}")
-    # print(f"INEXPERIENCED: {inexperienced_players}")
-    cleaned_players_list = experienced_players + inexperienced_players
-    # print(f"COMBINED: {cleaned_players_list}")
+    # Credit source: https://datagy.io/python-combine-lists/ - Combine Python Lists Alternating Using Zip
+    cleaned_players_list = [item for sublist in zip(experienced_players, inexperienced_players) for item in sublist]
 
-    for i, j in enumerate(cleaned_players_list):
-        print(f"CHECK NEW LIST from clean_data(): {i} {j}")
+    # for i, j in enumerate(cleaned_players_list):
+    #     print(f"CHECK NEW LIST from clean_data(): {i} {j}")
 
     return cleaned_players_list
 
@@ -67,7 +65,7 @@ def balance_teams(players, teams):
     my_list_for_del = cleaned_players_list[:]
     experienced_players_list = []
     inexperienced_players_list = []
-    player_exp_list = []
+    player_exp_list = cleaned_players_list
 
     for a_experience, b_experience in enumerate(cleaned_players_list):
         if b_experience['experience']:
@@ -75,14 +73,20 @@ def balance_teams(players, teams):
         else:
             inexperienced_players_list.append(b_experience)
 
-    print("\n\n")
-    print(f"EXP {experienced_players_list}")
-    print(f"\nIN-EXP {inexperienced_players_list}")
-    print("\n\n")
+
+    # player_exp_list = [item for sublist in zip(experienced_players_list, inexperienced_players_list) for item in sublist]
+
+    # print("\n\n")
+    # print(f"EXP {experienced_players_list}")
+    # print(f"\nIN-EXP {inexperienced_players_list}")
+    # print(f"\nCOMBINED INEXP AND EXP {len(player_exp_list), player_exp_list}")
+    # for k, v in enumerate(player_exp_list):
+    #     print(k, v)
+    # print("\n\n")
 
     for m in range(len(teams[:])):
-        testlist.append([{balanced_team_list[m]:my_list_for_del[:num_players_per_team].copy()}])
-        del my_list_for_del[:num_players_per_team]
+        testlist.append([{balanced_team_list[m]:player_exp_list[:num_players_per_team].copy()}])
+        del player_exp_list[:num_players_per_team]
         # print(my_list_for_del)
 
     print('\n\n\n')
