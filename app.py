@@ -7,8 +7,10 @@ NOTE: Python has no concept of actual constants like other languages have. But i
 real world. When you see ALL CAPS variable name you are meant to treat it as if it were a constant or a value that
 you cannot change/alter.
 """
+
 from constants import TEAMS
 from constants import PLAYERS
+
 
 """
 TEAMS = [
@@ -77,11 +79,11 @@ def balance_teams(players, teams):
         complete_team_list.append([{balanced_team_list[m]:player_exp_list[:num_players_per_team].copy()}])
         del player_exp_list[:num_players_per_team]
 
-    print('\n\n\n')
-    print(f"*** THIS IS TEST LIST index 0:\n {complete_team_list[0][0].values()}\n")
-    print("Count of elements in the Nested Dictionary = ", sum(len(v) for v in complete_team_list[0][0].values()))
-    print(f"*** THIS IS TEST LIST: index 1:\n {complete_team_list[1][0]}\n")
-    print(f"*** THIS IS TEST LIST: index 2:\n {complete_team_list[2][0]}\n")
+    # print('\n\n\n')
+    # print(f"*** THIS IS TEST LIST index 0:\n {complete_team_list[0][0].values()}\n")
+    # print("Count of elements in the Nested Dictionary = ", sum(len(v) for v in complete_team_list[0][0].values()))
+    # print(f"*** THIS IS TEST LIST: index 1:\n {complete_team_list[1][0]}\n")
+    # print(f"*** THIS IS TEST LIST: index 2:\n {complete_team_list[2][0]}\n")
 
     # average_height_list = []
     # for nn in complete_team_list[0][0]['Panthers']:
@@ -110,21 +112,34 @@ def balance_teams(players, teams):
                 print(f" Team: {teams[team_menu_option]} Stats")
                 print(f" --------------------")
                 print(f" Total players: ", sum(len(v) for v in complete_team_list[team_menu_option][0].values()))
-                print(f" Total experienced: ", len([player_name['experience'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]] if player_name['experience']]))
-                print(f" Total inexperienced: ", len([player_name['experience'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]] if not player_name['experience']]))
-                print(f" Average height: ", sum([player_name['height'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]]) / sum(len(v) for v in complete_team_list[team_menu_option][0].values()))
+                print(f" Total experienced: ", len([player_exp['experience'] for player_exp in complete_team_list[team_menu_option][0][teams[team_menu_option]] if player_exp['experience']]))
+                print(f" Total inexperienced: ", len([player_exp['experience'] for player_exp in complete_team_list[team_menu_option][0][teams[team_menu_option]] if not player_exp['experience']]))
+                print(f" Average height: ", sum([player_height['height'] for player_height in complete_team_list[team_menu_option][0][teams[team_menu_option]]]) / sum(len(v) for v in complete_team_list[team_menu_option][0].values()))
                 print(f" Players on Team:")
                 print(*[player_name['name'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
+
+                # Display the guardians with a helper function
                 print(f" Guardians:")
                 the_guardians = [(player_name['guardians']) for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]]
-                print(*[(player_name['guardians']) for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
+                # print(*[(guardian_name['guardians']) for guardian_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
 
-                for names in the_guardians:
-                    print(names[0])
-                    for namez in range(len(names)):
-                        print(namez)
+                # Flatten lists with unequal levels of nesting
+                # Source and credit to https://www.youtube.com/watch?v=p9Cp5w2HV7g
+
+                def flatten_list(x):
+                    for item in x:
+                        if type(item) in [list]:
+                            for num in flatten_list(item):
+                                yield (num)
+                        else:
+                            yield (item)
+
+                return print(*list(flatten_list(the_guardians)), sep=", ")
+
+                flatten_list(the_guardians)
 
                 team_menu_user_selected = True
+
         except ValueError:
             print('Numbers only')
     return players_only_set
@@ -153,34 +168,11 @@ def display_menu():
 
 
 if __name__ == '__main__':
-    clean_data(PLAYERS)
-    balance_teams(PLAYERS, TEAMS)
-    # main_menu_selected_option = display_menu()
-    # if main_menu_selected_option == 1:
-    #     clean_data(PLAYERS)
-    #     balance_teams(PLAYERS, TEAMS)
-    # elif main_menu_selected_option == 2:
-    #     print(f"Exiting app... Have a nice day")
-"""
-DON"T USE FOR NOW
-
-def display_team_stats(players, teams):
-    number_of_teams = len(teams)
-    for idx, team_name_menu in enumerate(teams):
-        print(f" {idx + 1})  {team_name_menu}")
-
-    team_menu_user_selected = False
-
-    while not team_menu_user_selected:
-        try:
-            team_menu_selected_option = int(input(f"\nEnter an option > "))
-            if team_menu_selected_option < 1 or team_menu_selected_option > number_of_teams:
-                print(f"Please enter a number between 1 and {number_of_teams}")
-            else:
-                print(f"Team: {teams[team_menu_selected_option - 1]} Stats")
-                print(f"--------------------")
-
-                team_menu_user_selected = True
-        except ValueError:
-            print('Numbers only')
-"""
+    # clean_data(PLAYERS)
+    # balance_teams(PLAYERS, TEAMS)
+    main_menu_selected_option = display_menu()
+    if main_menu_selected_option == 1:
+        clean_data(PLAYERS)
+        balance_teams(PLAYERS, TEAMS)
+    elif main_menu_selected_option == 2:
+        print(f"Exiting app... Have a nice day")
