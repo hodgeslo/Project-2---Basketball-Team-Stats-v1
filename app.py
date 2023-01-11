@@ -83,12 +83,12 @@ def balance_teams(players, teams):
     # print(f"*** THIS IS TEST LIST: index 1:\n {complete_team_list[1][0]}\n")
     # print(f"*** THIS IS TEST LIST: index 2:\n {complete_team_list[2][0]}\n")
 
-    average_height_list = []
-    for nn in complete_team_list[0][0]['Panthers']:
-        average_height_list.append(nn['height'])
-        print(nn['height'])
-
-    print(sum(average_height_list)/6)
+    # average_height_list = []
+    # for nn in complete_team_list[0][0]['Panthers']:
+    #     average_height_list.append(nn['height'])
+    #     print(nn['height'])
+    #
+    # print(sum(average_height_list)/6)
 
     """
     Here is where display the team stats
@@ -108,10 +108,10 @@ def balance_teams(players, teams):
                 team_menu_option = team_menu_option - 1
                 print(f" Team: {teams[team_menu_option]} Stats")
                 print(f" --------------------")
-                print(" Total players: ", sum(len(v) for v in complete_team_list[team_menu_option][0].values()))
+                print(f" Total players: ", sum(len(v) for v in complete_team_list[team_menu_option][0].values()))
                 print(f" Total experienced: ", len([player_name['experience'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]] if player_name['experience']]))
                 print(f" Total inexperienced: ", len([player_name['experience'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]] if not player_name['experience']]))
-                print(f" Average height: ")
+                print(f" Average height: ", sum([player_name['height'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]]) / sum(len(v) for v in complete_team_list[team_menu_option][0].values()))
                 print(f" Players on Team:")
                 print(*[player_name['name'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
                 team_menu_user_selected = True
@@ -140,16 +140,15 @@ def display_menu():
     return main_menu_selected_option
 
 # 2. Proper use of Dunder Main
-if __name__ == '__main__':
-    clean_data(PLAYERS)
-    # print(len(clean_data(PLAYERS)))
-    balance_teams(PLAYERS, TEAMS)
-    # main_menu_selected_option = display_menu()
-    # if main_menu_selected_option == 1:
-    #     balance_teams(PLAYERS, TEAMS)
-    # elif main_menu_selected_option == 2:
-    #     print(f"Exiting app... Have a nice day")
 
+
+if __name__ == '__main__':
+    main_menu_selected_option = display_menu()
+    if main_menu_selected_option == 1:
+        clean_data(PLAYERS)
+        balance_teams(PLAYERS, TEAMS)
+    elif main_menu_selected_option == 2:
+        print(f"Exiting app... Have a nice day")
 """
 DON"T USE FOR NOW
 
