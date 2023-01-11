@@ -61,7 +61,7 @@ def balance_teams(players, teams):
     cleaned_players_list = clean_data(players[:])
     balanced_team_list = teams[:]
     players_only_set = set()
-    testlist = []
+    complete_team_list = []
     my_list_for_del = cleaned_players_list[:]
     player_exp_list = cleaned_players_list
 
@@ -74,49 +74,21 @@ def balance_teams(players, teams):
     # print("\n\n")
 
     for m in range(len(teams[:])):
-        testlist.append([{balanced_team_list[m]:player_exp_list[:num_players_per_team].copy()}])
+        complete_team_list.append([{balanced_team_list[m]:player_exp_list[:num_players_per_team].copy()}])
         del player_exp_list[:num_players_per_team]
-        # print(my_list_for_del)
 
     print('\n\n\n')
-    print(f"*** THIS IS TEST LIST index 0:\n {testlist[0][0]}\n")
-    print(f"*** THIS IS TEST LIST: index 1:\n {testlist[1][0]}\n")
-    print(f"*** THIS IS TEST LIST: index 2:\n {testlist[2][0]}\n")
+    print(f"*** THIS IS TEST LIST index 0:\n {complete_team_list[0][0]}\n")
+    print(f"*** THIS IS TEST LIST: index 1:\n {complete_team_list[1][0]}\n")
+    print(f"*** THIS IS TEST LIST: index 2:\n {complete_team_list[2][0]}\n")
 
     average_height_list = []
-    for nn in testlist[0][0]['Panthers']:
+    for nn in complete_team_list[0][0]['Panthers']:
         average_height_list.append(nn['height'])
         print(nn['height'])
 
     print(sum(average_height_list)/6)
-
-
-    # START AGAIN ABOVE THIS LINE
-
-    # for key in cleaned_players_list:
-    #     # players_only_set.add(key['name'])
-    #     players_only_list.append(key['name'])
-
-    # for i in range(num_players_team):
-    #     players_only_set.add(players_only_list[i])
-    #     # balanced_team_list.append(players_only_list[i])
-
-    # for idx_players, num_players in enumerate(cleaned_players_list):
-    #     players_only_set.add(players_only_list[idx_players])
-    #     # cleaned_player_list.pop(idx_players)
-    #     print(idx_players, num_players)
-
-    # for i in range(len(teams)):
-    #     players_only_dict[initial_team_list[i]] = players_only_set
-
-    # for idx, team_name in enumerate(teams):
-    #     players_only_dict[team_name] = players_only_set
-
-    # print(f"This is a set: {players_only_set}")
-    # print(f"This is a list: {players_only_list}")
-    # print(f"This is a dict: {players_only_dict}")
-    print(f"\n\n")
-
+    
     """
     Here is where display the team stats
     """
