@@ -106,19 +106,14 @@ def balance_teams(players, teams):
                 print(f"Please enter a number between 1 and {number_of_teams}")
             else:
                 team_menu_option = team_menu_option - 1
-                print(f"Team: {teams[team_menu_option]} Stats")
-                print(f"--------------------")
-                print("Total players: ", sum(len(v) for v in complete_team_list[team_menu_option][0].values()))
-                print(f"Total experienced: ")
-                print(f"Total inexperienced: ")
-                print(f"Average height: ")
-                # print(f"Players on Team:\n",complete_team_list[team_menu_option][team_menu_option][teams[team_menu_option]])
-                #mydict = [[nnn.items()][0] for nnn in complete_team_list[team_menu_option][0][teams[team_menu_option]]]
-                #print(f"Players on Team:\n", mydict)
-                # for nn in complete_team_list[team_menu_option][0][teams[team_menu_option]]:
-                #     print(nn['name'])
-                # testcomp = [zz['name'] for zz in complete_team_list[team_menu_option][0][teams[team_menu_option]]]
-                print(*[player_name['name'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
+                print(f" Team: {teams[team_menu_option]} Stats")
+                print(f" --------------------")
+                print(" Total players: ", sum(len(v) for v in complete_team_list[team_menu_option][0].values()))
+                print(f" Total experienced: ")
+                print(f" Total inexperienced: ")
+                print(f" Average height: ")
+                print(f" Players on Team:")
+                print(*[ player_name['name'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
                 team_menu_user_selected = True
         except ValueError:
             print('Numbers only')
