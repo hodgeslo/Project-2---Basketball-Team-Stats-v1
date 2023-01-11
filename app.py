@@ -41,7 +41,7 @@ def clean_data(players):
         cleaned_players_list.append(cleaned_players)
 
     for player_experience in cleaned_players_list.copy():
-        if player_experience['experience'] == True:
+        if player_experience['experience']:
             experienced_players.append(player_experience)
         else:
             inexperienced_players.append(player_experience)
@@ -52,7 +52,7 @@ def clean_data(players):
     # print(f"COMBINED: {cleaned_players_list}")
 
     for i, j in enumerate(cleaned_players_list):
-        print(f"CHECK NEW LIST: {i} {j}")
+        print(f"CHECK NEW LIST from clean_data(): {i} {j}")
 
     return cleaned_players_list
 
@@ -65,6 +65,20 @@ def balance_teams(players, teams):
     players_only_set = set()
     testlist = []
     my_list_for_del = cleaned_players_list[:]
+    experienced_players_list = []
+    inexperienced_players_list = []
+    player_exp_list = []
+
+    for a_experience, b_experience in enumerate(cleaned_players_list):
+        if b_experience['experience']:
+            experienced_players_list.append(b_experience)
+        else:
+            inexperienced_players_list.append(b_experience)
+
+    print("\n\n")
+    print(f"EXP {experienced_players_list}")
+    print(f"\nIN-EXP {inexperienced_players_list}")
+    print("\n\n")
 
     for m in range(len(teams[:])):
         testlist.append([{balanced_team_list[m]:my_list_for_del[:num_players_per_team].copy()}])
@@ -165,15 +179,6 @@ if __name__ == '__main__':
     #     balance_teams(PLAYERS, TEAMS)
     # elif main_menu_selected_option == 2:
     #     print(f"Exiting app... Have a nice day")
-
-    # balance_teams = [
-    #     {
-    #         'Panthers': ['Karl Saygan', 'Skrillex' ]
-    #     },
-    #     {
-    #         'Bandits': ['Lonnie Hodges', 'Tool' ]
-    #     }
-    # ]
 
 """
 DON"T USE FOR NOW
