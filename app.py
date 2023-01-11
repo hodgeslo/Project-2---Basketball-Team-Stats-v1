@@ -63,18 +63,7 @@ def balance_teams(players, teams):
     players_only_set = set()
     testlist = []
     my_list_for_del = cleaned_players_list[:]
-    experienced_players_list = []
-    inexperienced_players_list = []
     player_exp_list = cleaned_players_list
-
-    for a_experience, b_experience in enumerate(cleaned_players_list):
-        if b_experience['experience']:
-            experienced_players_list.append(b_experience)
-        else:
-            inexperienced_players_list.append(b_experience)
-
-
-    # player_exp_list = [item for sublist in zip(experienced_players_list, inexperienced_players_list) for item in sublist]
 
     # print("\n\n")
     # print(f"EXP {experienced_players_list}")
