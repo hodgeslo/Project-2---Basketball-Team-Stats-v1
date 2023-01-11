@@ -62,18 +62,8 @@ def balance_teams(players, teams):
     num_players_per_team = int(len(players) / len(teams))
     cleaned_players_list = clean_data(players[:])
     balanced_team_list = teams[:]
-    players_only_set = set()
     complete_team_list = []
-    my_list_for_del = cleaned_players_list[:]
     player_exp_list = cleaned_players_list
-
-    # print("\n\n")
-    # print(f"EXP {experienced_players_list}")
-    # print(f"\nIN-EXP {inexperienced_players_list}")
-    # print(f"\nCOMBINED INEXP AND EXP {len(player_exp_list), player_exp_list}")
-    # for k, v in enumerate(player_exp_list):
-    #     print(k, v)
-    # print("\n\n")
 
     for m in range(len(teams[:])):
         complete_team_list.append([{balanced_team_list[m]:player_exp_list[:num_players_per_team].copy()}])
@@ -85,13 +75,6 @@ def balance_teams(players, teams):
     # print(f"*** THIS IS TEST LIST: index 1:\n {complete_team_list[1][0]}\n")
     # print(f"*** THIS IS TEST LIST: index 2:\n {complete_team_list[2][0]}\n")
 
-    # average_height_list = []
-    # for nn in complete_team_list[0][0]['Panthers']:
-    #     average_height_list.append(nn['height'])
-    #     print(nn['height'])
-    #
-    # print(sum(average_height_list)/6)
-
     """
     Here is where display the team stats
     """
@@ -100,9 +83,9 @@ def balance_teams(players, teams):
     for idx, team_name_menu in enumerate(teams):
         print(f" {idx + 1})  {team_name_menu}")
 
-    team_menu_user_selected = False
+    # team_menu_user_selected = True
 
-    while not team_menu_user_selected:
+    while True:
         try:
             team_menu_option = int(input(f"\nEnter an option > "))
             if team_menu_option < 1 or team_menu_option > number_of_teams:
@@ -133,16 +116,18 @@ def balance_teams(players, teams):
                                 yield (num)
                         else:
                             yield (item)
-
                 return print(*list(flatten_list(the_guardians)), sep=", ")
 
                 flatten_list(the_guardians)
-
-                team_menu_user_selected = True
-
         except ValueError:
             print('Numbers only')
-    return players_only_set
+
+        input("Press ENTER to Continue")
+        user_continued = input("Press ENTER to Continue")
+        if user_continued == "":
+            print(display_menu())
+        else:
+            continue
 
 
 def display_menu():
