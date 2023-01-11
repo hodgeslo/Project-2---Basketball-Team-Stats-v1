@@ -33,6 +33,8 @@ balance_teams = [
         }
     ]
 """
+
+
 # 4. Create a clean_data function
 def clean_data(players):
     cleaned_players_list = []
@@ -56,8 +58,6 @@ def balance_teams(players, teams):
     testlist = []
     my_list_for_del = cleaned_players_list[:]
 
-    # print(balanced_team_list[0])
-    # print(cleaned_players_list[:6])
     for m in range(len(teams[:])):
         testlist.append([{balanced_team_list[m]:my_list_for_del[:num_players_per_team].copy()}])
         del my_list_for_del[:num_players_per_team]
@@ -66,8 +66,17 @@ def balance_teams(players, teams):
 
     print('\n\n\n')
     print(f"*** THIS IS TEST LIST index 0:\n {testlist[0][0]}\n")
+    print(f"*** THIS IS TEST LIST index 0:\n {sorted(testlist[0][0].values())}\n")
     print(f"*** THIS IS TEST LIST: index 1:\n {testlist[1][0]}\n")
     print(f"*** THIS IS TEST LIST: index 2:\n {testlist[2][0]}\n")
+
+    average_height_list = []
+    for nn in testlist[0][0]['Panthers']:
+        average_height_list.append(nn['height'])
+        print(nn['height'])
+
+    print(sum(average_height_list)/6)
+
     #
     # for x in range(len(teams)):
     #     print(balanced_team_list[x])
