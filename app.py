@@ -32,7 +32,7 @@ def clean_data(players):
     experienced_players = []
     inexperienced_players = []
     for player in players:
-        cleaned_players = {'name': player['name'], 'guardians': player['guardians']}
+        cleaned_players = {'name': player['name'], 'guardians': player['guardians'].split(" and ")}
         if player['experience'] == 'YES':
             cleaned_players['experience'] = True
         else:
@@ -40,13 +40,19 @@ def clean_data(players):
         cleaned_players['height'] = int(player['height'].split()[0])
         cleaned_players_list.append(cleaned_players)
 
-    for player1 in cleaned_players_list.copy():
-        if player1['experience'] == True:
-            experienced_players.append(player1)
-        elif player1['experience'] == False:
-            inexperienced_players.append(player1)
+    for player_experience in cleaned_players_list.copy():
+        if player_experience['experience'] == True:
+            experienced_players.append(player_experience)
+        else:
+            inexperienced_players.append(player_experience)
 
+    # print(f"EXPERIENCED: {experienced_players}")
+    # print(f"INEXPERIENCED: {inexperienced_players}")
     cleaned_players_list = experienced_players + inexperienced_players
+    # print(f"COMBINED: {cleaned_players_list}")
+
+    for i, j in enumerate(cleaned_players_list):
+        print(f"CHECK NEW LIST: {i} {j}")
 
     return cleaned_players_list
 
@@ -67,7 +73,6 @@ def balance_teams(players, teams):
 
     print('\n\n\n')
     print(f"*** THIS IS TEST LIST index 0:\n {testlist[0][0]}\n")
-    print(f"*** THIS IS TEST LIST index 0:\n {sorted(testlist[0][0].values())}\n")
     print(f"*** THIS IS TEST LIST: index 1:\n {testlist[1][0]}\n")
     print(f"*** THIS IS TEST LIST: index 2:\n {testlist[2][0]}\n")
 
@@ -152,8 +157,8 @@ def display_menu():
 
 # 2. Proper use of Dunder Main
 if __name__ == '__main__':
-    print(clean_data(PLAYERS))
-    print(len(clean_data(PLAYERS)))
+    clean_data(PLAYERS)
+    # print(len(clean_data(PLAYERS)))
     balance_teams(PLAYERS, TEAMS)
     # main_menu_selected_option = display_menu()
     # if main_menu_selected_option == 1:
