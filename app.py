@@ -77,11 +77,11 @@ def balance_teams(players, teams):
         complete_team_list.append([{balanced_team_list[m]:player_exp_list[:num_players_per_team].copy()}])
         del player_exp_list[:num_players_per_team]
 
-    # print('\n\n\n')
-    # print(f"*** THIS IS TEST LIST index 0:\n {complete_team_list[0][0].values()}\n")
-    # print("Count of elements in the Nested Dictionary = ", sum(len(v) for v in complete_team_list[0][0].values()))
-    # print(f"*** THIS IS TEST LIST: index 1:\n {complete_team_list[1][0]}\n")
-    # print(f"*** THIS IS TEST LIST: index 2:\n {complete_team_list[2][0]}\n")
+    print('\n\n\n')
+    print(f"*** THIS IS TEST LIST index 0:\n {complete_team_list[0][0].values()}\n")
+    print("Count of elements in the Nested Dictionary = ", sum(len(v) for v in complete_team_list[0][0].values()))
+    print(f"*** THIS IS TEST LIST: index 1:\n {complete_team_list[1][0]}\n")
+    print(f"*** THIS IS TEST LIST: index 2:\n {complete_team_list[2][0]}\n")
 
     # average_height_list = []
     # for nn in complete_team_list[0][0]['Panthers']:
@@ -116,9 +116,14 @@ def balance_teams(players, teams):
                 print(f" Players on Team:")
                 print(*[player_name['name'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
                 print(f" Guardians:")
-                print(*[player_name['guardians'] for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
-                print(*[player_name['guardians'][0] for player_name in
-                        complete_team_list[team_menu_option][0]['Panthers'][0]], sep=", ")
+                the_guardians = [(player_name['guardians']) for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]]
+                print(*[(player_name['guardians']) for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
+
+                for names in the_guardians:
+                    print(names[0])
+                    for namez in range(len(names)):
+                        print(namez)
+
                 team_menu_user_selected = True
         except ValueError:
             print('Numbers only')
