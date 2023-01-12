@@ -63,7 +63,7 @@ def balance_teams(players, teams):
                 print(f"Please enter a number between 1 and {number_of_teams}")
             else:
                 team_menu_option = team_menu_option - 1
-                print(f"\n Team: {teams[team_menu_option]} Stats")
+                print(f"\n Team Stats: {teams[team_menu_option]}")
                 print(f" --------------------")
                 print(f" Total players: ", sum(len(v) for v in complete_team_list[team_menu_option][0].values()))
                 print(f" Total experienced: ", len([player_exp['experience'] for player_exp in complete_team_list[team_menu_option][0][teams[team_menu_option]] if player_exp['experience']]))
