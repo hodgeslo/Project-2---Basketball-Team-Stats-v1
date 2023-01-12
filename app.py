@@ -50,9 +50,7 @@ def clean_data(players):
 
     # Credit source: https://datagy.io/python-combine-lists/ - Combine Python Lists Alternating Using Zip
     cleaned_players_list = [item for sublist in zip(experienced_players, inexperienced_players) for item in sublist]
-
-    # for i, j in enumerate(cleaned_players_list):
-    #     print(f"CHECK NEW LIST from clean_data(): {i} {j}")
+    # end credit source
 
     return cleaned_players_list
 
@@ -90,7 +88,7 @@ def balance_teams(players, teams):
             team_menu_option = int(input(f"\nEnter an option > "))
             if team_menu_option < 1 or team_menu_option > number_of_teams:
                 print(f"Please enter a number between 1 and {number_of_teams}")
-            else:
+            elif team_menu_option:
                 team_menu_option = team_menu_option - 1
                 print(f" Team: {teams[team_menu_option]} Stats")
                 print(f" --------------------")
@@ -103,12 +101,10 @@ def balance_teams(players, teams):
 
                 # Display the guardians with a helper function
                 print(f" Guardians:")
-                the_guardians = [(player_name['guardians']) for player_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]]
-                # print(*[(guardian_name['guardians']) for guardian_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]], sep=", ")
+                the_guardians = [(guardian_name['guardians']) for guardian_name in complete_team_list[team_menu_option][0][teams[team_menu_option]]]
 
                 # Flatten lists with unequal levels of nesting
                 # Source and credit to https://www.youtube.com/watch?v=p9Cp5w2HV7g
-
                 def flatten_list(x):
                     for item in x:
                         if type(item) in [list]:
@@ -116,18 +112,24 @@ def balance_teams(players, teams):
                                 yield (num)
                         else:
                             yield (item)
-                return print(*list(flatten_list(the_guardians)), sep=", ")
+                return print(*list(flatten_list(the_guardians)), sep=", "), input("Press ENTER to Continue")
 
-                flatten_list(the_guardians)
+                print(display_menu())
+                # end credit source
+            # else:
+            #     continue
+            #     # input("Press ENTER to Continue")
+            #
+            #     input("Press ENTER to Continue")
+            #     user_continued = input("Press ENTER to Continue")
+            #     if user_continued == "":
+            #         print(display_menu())
+            #     else:
+            #         input("Press ENTER to Continue")
         except ValueError:
             print('Numbers only')
 
-        input("Press ENTER to Continue")
-        user_continued = input("Press ENTER to Continue")
-        if user_continued == "":
-            print(display_menu())
-        else:
-            continue
+
 
 
 def display_menu():
@@ -153,8 +155,6 @@ def display_menu():
 
 
 if __name__ == '__main__':
-    # clean_data(PLAYERS)
-    # balance_teams(PLAYERS, TEAMS)
     main_menu_selected_option = display_menu()
     if main_menu_selected_option == 1:
         clean_data(PLAYERS)
