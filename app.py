@@ -79,7 +79,7 @@ def balance_teams(players, teams):
                 team_menu_user_selected = False
                 input("\n\nPress ENTER to Continue")
         except ValueError:
-            print('Numbers only')
+            print('Oops, Numbers only')
 
 # Flatten lists with unequal levels of nesting
 # Source and credit to https://www.youtube.com/watch?v=p9Cp5w2HV7g
