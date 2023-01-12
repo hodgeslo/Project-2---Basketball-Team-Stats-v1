@@ -83,6 +83,8 @@ def balance_teams(players, teams):
 
 # Flatten lists with unequal levels of nesting
 # Source and credit to https://www.youtube.com/watch?v=p9Cp5w2HV7g
+
+
 def flatten_list(x):
     for item in x:
         if type(item) in [list]:
